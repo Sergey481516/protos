@@ -400,6 +400,7 @@ func (x *LoginResponse) GetUser() *UserShort {
 
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -432,6 +433,13 @@ func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
 func (*LogoutRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *LogoutRequest) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
 }
 
 type LogoutResponse struct {
@@ -596,6 +604,7 @@ func (x *ForgotPasswordRequest) GetEmail() string {
 
 type ForgotPasswordResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	ResetId       string                 `protobuf:"bytes,1,opt,name=reset_id,json=resetId,proto3" json:"reset_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -630,9 +639,16 @@ func (*ForgotPasswordResponse) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{11}
 }
 
+func (x *ForgotPasswordResponse) GetResetId() string {
+	if x != nil {
+		return x.ResetId
+	}
+	return ""
+}
+
 type SendCodeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	ResetId       string                 `protobuf:"bytes,1,opt,name=reset_id,json=resetId,proto3" json:"reset_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -667,16 +683,15 @@ func (*SendCodeRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *SendCodeRequest) GetCode() string {
+func (x *SendCodeRequest) GetResetId() string {
 	if x != nil {
-		return x.Code
+		return x.ResetId
 	}
 	return ""
 }
 
 type SendCodeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ResetToken    string                 `protobuf:"bytes,1,opt,name=reset_token,json=resetToken,proto3" json:"reset_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -711,17 +726,11 @@ func (*SendCodeResponse) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *SendCodeResponse) GetResetToken() string {
-	if x != nil {
-		return x.ResetToken
-	}
-	return ""
-}
-
 type ResetPasswordRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Password      string                 `protobuf:"bytes,1,opt,name=password,proto3" json:"password,omitempty"`
-	ResetToken    string                 `protobuf:"bytes,2,opt,name=reset_token,json=resetToken,proto3" json:"reset_token,omitempty"`
+	ResetId       string                 `protobuf:"bytes,1,opt,name=reset_id,json=resetId,proto3" json:"reset_id,omitempty"`
+	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -756,16 +765,23 @@ func (*ResetPasswordRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *ResetPasswordRequest) GetPassword() string {
+func (x *ResetPasswordRequest) GetResetId() string {
 	if x != nil {
-		return x.Password
+		return x.ResetId
 	}
 	return ""
 }
 
-func (x *ResetPasswordRequest) GetResetToken() string {
+func (x *ResetPasswordRequest) GetCode() string {
 	if x != nil {
-		return x.ResetToken
+		return x.Code
+	}
+	return ""
+}
+
+func (x *ResetPasswordRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
 	}
 	return ""
 }
@@ -837,24 +853,24 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\rLoginResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12#\n" +
-	"\x04user\x18\x03 \x01(\v2\x0f.auth.UserShortR\x04user\"\x0f\n" +
-	"\rLogoutRequest\"\x10\n" +
+	"\x04user\x18\x03 \x01(\v2\x0f.auth.UserShortR\x04user\"4\n" +
+	"\rLogoutRequest\x12#\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\x10\n" +
 	"\x0eLogoutResponse\"5\n" +
 	"\x0eRefreshRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\x11\n" +
 	"\x0fRefreshResponse\"-\n" +
 	"\x15ForgotPasswordRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\"\x18\n" +
-	"\x16ForgotPasswordResponse\"%\n" +
-	"\x0fSendCodeRequest\x12\x12\n" +
-	"\x04code\x18\x01 \x01(\tR\x04code\"3\n" +
-	"\x10SendCodeResponse\x12\x1f\n" +
-	"\vreset_token\x18\x01 \x01(\tR\n" +
-	"resetToken\"S\n" +
-	"\x14ResetPasswordRequest\x12\x1a\n" +
-	"\bpassword\x18\x01 \x01(\tR\bpassword\x12\x1f\n" +
-	"\vreset_token\x18\x02 \x01(\tR\n" +
-	"resetToken\"\x17\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"3\n" +
+	"\x16ForgotPasswordResponse\x12\x19\n" +
+	"\breset_id\x18\x01 \x01(\tR\aresetId\",\n" +
+	"\x0fSendCodeRequest\x12\x19\n" +
+	"\breset_id\x18\x01 \x01(\tR\aresetId\"\x12\n" +
+	"\x10SendCodeResponse\"a\n" +
+	"\x14ResetPasswordRequest\x12\x19\n" +
+	"\breset_id\x18\x01 \x01(\tR\aresetId\x12\x12\n" +
+	"\x04code\x18\x02 \x01(\tR\x04code\x12\x1a\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\"\x17\n" +
 	"\x15ResetPasswordResponse2\x93\x05\n" +
 	"\x04Auth\x12[\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/api/v1/auth/register\x12O\n" +

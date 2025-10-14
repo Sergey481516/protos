@@ -95,7 +95,9 @@ message LoginResponse {
   UserShort user = 3;
 }
 
-message LogoutRequest {}
+message LogoutRequest {
+  string refresh_token = 1;
+}
 
 message LogoutResponse {}
 
@@ -109,19 +111,20 @@ message ForgotPasswordRequest {
   string email = 1;
 }
 
-message ForgotPasswordResponse {}
+message ForgotPasswordResponse {
+  string reset_id = 1;
+}
 
 message SendCodeRequest {
-  string code = 1;
+  string reset_id = 1;
 }
 
-message SendCodeResponse {
-  string reset_token = 1;
-}
+message SendCodeResponse {}
 
 message ResetPasswordRequest {
-  string password = 1;
-  string reset_token = 2;
+  string reset_id = 1;
+  string code = 2;
+  string password = 3;
 }
 
 message ResetPasswordResponse {}

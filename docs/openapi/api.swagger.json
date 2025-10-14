@@ -251,7 +251,12 @@
       }
     },
     "authForgotPasswordResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "resetId": {
+          "type": "string"
+        }
+      }
     },
     "authLoginRequest": {
       "type": "object",
@@ -283,7 +288,12 @@
       }
     },
     "authLogoutRequest": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "refreshToken": {
+          "type": "string"
+        }
+      }
     },
     "authLogoutResponse": {
       "type": "object"
@@ -330,10 +340,13 @@
     "authResetPasswordRequest": {
       "type": "object",
       "properties": {
-        "password": {
+        "resetId": {
           "type": "string"
         },
-        "resetToken": {
+        "code": {
+          "type": "string"
+        },
+        "password": {
           "type": "string"
         }
       }
@@ -341,18 +354,13 @@
     "authSendCodeRequest": {
       "type": "object",
       "properties": {
-        "code": {
+        "resetId": {
           "type": "string"
         }
       }
     },
     "authSendCodeResponse": {
-      "type": "object",
-      "properties": {
-        "resetToken": {
-          "type": "string"
-        }
-      }
+      "type": "object"
     },
     "authUserShort": {
       "type": "object",
