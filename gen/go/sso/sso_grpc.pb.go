@@ -24,7 +24,8 @@ const (
 	Auth_Logout_FullMethodName         = "/auth.Auth/Logout"
 	Auth_Refresh_FullMethodName        = "/auth.Auth/Refresh"
 	Auth_ForgotPassword_FullMethodName = "/auth.Auth/ForgotPassword"
-	Auth_SendCode_FullMethodName       = "/auth.Auth/SendCode"
+	Auth_ResendCode_FullMethodName     = "/auth.Auth/ResendCode"
+	Auth_VerifyCode_FullMethodName     = "/auth.Auth/VerifyCode"
 	Auth_ResetPassword_FullMethodName  = "/auth.Auth/ResetPassword"
 )
 
@@ -37,7 +38,8 @@ type AuthClient interface {
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 	Refresh(ctx context.Context, in *RefreshRequest, opts ...grpc.CallOption) (*RefreshResponse, error)
 	ForgotPassword(ctx context.Context, in *ForgotPasswordRequest, opts ...grpc.CallOption) (*ForgotPasswordResponse, error)
-	SendCode(ctx context.Context, in *SendCodeRequest, opts ...grpc.CallOption) (*SendCodeResponse, error)
+	ResendCode(ctx context.Context, in *ResendCodeRequest, opts ...grpc.CallOption) (*ResendCodeResponse, error)
+	VerifyCode(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*VerifyCodeResponse, error)
 	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error)
 }
 
@@ -99,10 +101,20 @@ func (c *authClient) ForgotPassword(ctx context.Context, in *ForgotPasswordReque
 	return out, nil
 }
 
-func (c *authClient) SendCode(ctx context.Context, in *SendCodeRequest, opts ...grpc.CallOption) (*SendCodeResponse, error) {
+func (c *authClient) ResendCode(ctx context.Context, in *ResendCodeRequest, opts ...grpc.CallOption) (*ResendCodeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SendCodeResponse)
-	err := c.cc.Invoke(ctx, Auth_SendCode_FullMethodName, in, out, cOpts...)
+	out := new(ResendCodeResponse)
+	err := c.cc.Invoke(ctx, Auth_ResendCode_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authClient) VerifyCode(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*VerifyCodeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(VerifyCodeResponse)
+	err := c.cc.Invoke(ctx, Auth_VerifyCode_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -128,7 +140,8 @@ type AuthServer interface {
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	Refresh(context.Context, *RefreshRequest) (*RefreshResponse, error)
 	ForgotPassword(context.Context, *ForgotPasswordRequest) (*ForgotPasswordResponse, error)
-	SendCode(context.Context, *SendCodeRequest) (*SendCodeResponse, error)
+	ResendCode(context.Context, *ResendCodeRequest) (*ResendCodeResponse, error)
+	VerifyCode(context.Context, *VerifyCodeRequest) (*VerifyCodeResponse, error)
 	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
@@ -155,8 +168,11 @@ func (UnimplementedAuthServer) Refresh(context.Context, *RefreshRequest) (*Refre
 func (UnimplementedAuthServer) ForgotPassword(context.Context, *ForgotPasswordRequest) (*ForgotPasswordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ForgotPassword not implemented")
 }
-func (UnimplementedAuthServer) SendCode(context.Context, *SendCodeRequest) (*SendCodeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SendCode not implemented")
+func (UnimplementedAuthServer) ResendCode(context.Context, *ResendCodeRequest) (*ResendCodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResendCode not implemented")
+}
+func (UnimplementedAuthServer) VerifyCode(context.Context, *VerifyCodeRequest) (*VerifyCodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VerifyCode not implemented")
 }
 func (UnimplementedAuthServer) ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetPassword not implemented")
@@ -272,20 +288,38 @@ func _Auth_ForgotPassword_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Auth_SendCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SendCodeRequest)
+func _Auth_ResendCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResendCodeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).SendCode(ctx, in)
+		return srv.(AuthServer).ResendCode(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Auth_SendCode_FullMethodName,
+		FullMethod: Auth_ResendCode_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).SendCode(ctx, req.(*SendCodeRequest))
+		return srv.(AuthServer).ResendCode(ctx, req.(*ResendCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Auth_VerifyCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VerifyCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).VerifyCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_VerifyCode_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).VerifyCode(ctx, req.(*VerifyCodeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -336,8 +370,12 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Auth_ForgotPassword_Handler,
 		},
 		{
-			MethodName: "SendCode",
-			Handler:    _Auth_SendCode_Handler,
+			MethodName: "ResendCode",
+			Handler:    _Auth_ResendCode_Handler,
+		},
+		{
+			MethodName: "VerifyCode",
+			Handler:    _Auth_VerifyCode_Handler,
 		},
 		{
 			MethodName: "ResetPassword",

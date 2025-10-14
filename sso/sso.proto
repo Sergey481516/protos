@@ -42,9 +42,16 @@ service Auth {
     };
   }
 
-  rpc SendCode(SendCodeRequest) returns (SendCodeResponse) {
+  rpc ResendCode(ResendCodeRequest) returns (ResendCodeResponse) {
     option (google.api.http) = {
-      post: "/api/v1/code",
+      post: "/api/v1/resend-code",
+      body: "*"
+    };
+  }
+
+  rpc VerifyCode(VerifyCodeRequest) returns (VerifyCodeResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/verify-code",
       body: "*"
     };
   }
@@ -115,15 +122,21 @@ message ForgotPasswordResponse {
   string reset_id = 1;
 }
 
-message SendCodeRequest {
+message ResendCodeRequest {
   string reset_id = 1;
 }
 
-message SendCodeResponse {}
+message ResendCodeResponse {}
+
+message VerifyCodeRequest {
+  string reset_id = 1;
+  string code = 2;
+}
+
+message VerifyCodeResponse {}
 
 message ResetPasswordRequest {
   string reset_id = 1;
-  string code = 2;
   string password = 3;
 }
 

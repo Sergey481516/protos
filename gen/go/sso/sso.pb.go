@@ -646,27 +646,27 @@ func (x *ForgotPasswordResponse) GetResetId() string {
 	return ""
 }
 
-type SendCodeRequest struct {
+type ResendCodeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ResetId       string                 `protobuf:"bytes,1,opt,name=reset_id,json=resetId,proto3" json:"reset_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SendCodeRequest) Reset() {
-	*x = SendCodeRequest{}
+func (x *ResendCodeRequest) Reset() {
+	*x = ResendCodeRequest{}
 	mi := &file_sso_sso_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SendCodeRequest) String() string {
+func (x *ResendCodeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SendCodeRequest) ProtoMessage() {}
+func (*ResendCodeRequest) ProtoMessage() {}
 
-func (x *SendCodeRequest) ProtoReflect() protoreflect.Message {
+func (x *ResendCodeRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_sso_sso_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -678,38 +678,38 @@ func (x *SendCodeRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SendCodeRequest.ProtoReflect.Descriptor instead.
-func (*SendCodeRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ResendCodeRequest.ProtoReflect.Descriptor instead.
+func (*ResendCodeRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *SendCodeRequest) GetResetId() string {
+func (x *ResendCodeRequest) GetResetId() string {
 	if x != nil {
 		return x.ResetId
 	}
 	return ""
 }
 
-type SendCodeResponse struct {
+type ResendCodeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SendCodeResponse) Reset() {
-	*x = SendCodeResponse{}
+func (x *ResendCodeResponse) Reset() {
+	*x = ResendCodeResponse{}
 	mi := &file_sso_sso_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SendCodeResponse) String() string {
+func (x *ResendCodeResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SendCodeResponse) ProtoMessage() {}
+func (*ResendCodeResponse) ProtoMessage() {}
 
-func (x *SendCodeResponse) ProtoReflect() protoreflect.Message {
+func (x *ResendCodeResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_sso_sso_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -721,15 +721,102 @@ func (x *SendCodeResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SendCodeResponse.ProtoReflect.Descriptor instead.
-func (*SendCodeResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ResendCodeResponse.ProtoReflect.Descriptor instead.
+func (*ResendCodeResponse) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{13}
+}
+
+type VerifyCodeRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ResetId       string                 `protobuf:"bytes,1,opt,name=reset_id,json=resetId,proto3" json:"reset_id,omitempty"`
+	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VerifyCodeRequest) Reset() {
+	*x = VerifyCodeRequest{}
+	mi := &file_sso_sso_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyCodeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyCodeRequest) ProtoMessage() {}
+
+func (x *VerifyCodeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_sso_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyCodeRequest.ProtoReflect.Descriptor instead.
+func (*VerifyCodeRequest) Descriptor() ([]byte, []int) {
+	return file_sso_sso_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *VerifyCodeRequest) GetResetId() string {
+	if x != nil {
+		return x.ResetId
+	}
+	return ""
+}
+
+func (x *VerifyCodeRequest) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+type VerifyCodeResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VerifyCodeResponse) Reset() {
+	*x = VerifyCodeResponse{}
+	mi := &file_sso_sso_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyCodeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyCodeResponse) ProtoMessage() {}
+
+func (x *VerifyCodeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_sso_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyCodeResponse.ProtoReflect.Descriptor instead.
+func (*VerifyCodeResponse) Descriptor() ([]byte, []int) {
+	return file_sso_sso_proto_rawDescGZIP(), []int{15}
 }
 
 type ResetPasswordRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ResetId       string                 `protobuf:"bytes,1,opt,name=reset_id,json=resetId,proto3" json:"reset_id,omitempty"`
-	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
 	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -737,7 +824,7 @@ type ResetPasswordRequest struct {
 
 func (x *ResetPasswordRequest) Reset() {
 	*x = ResetPasswordRequest{}
-	mi := &file_sso_sso_proto_msgTypes[14]
+	mi := &file_sso_sso_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -749,7 +836,7 @@ func (x *ResetPasswordRequest) String() string {
 func (*ResetPasswordRequest) ProtoMessage() {}
 
 func (x *ResetPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_sso_proto_msgTypes[14]
+	mi := &file_sso_sso_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -762,19 +849,12 @@ func (x *ResetPasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetPasswordRequest.ProtoReflect.Descriptor instead.
 func (*ResetPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_sso_sso_proto_rawDescGZIP(), []int{14}
+	return file_sso_sso_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ResetPasswordRequest) GetResetId() string {
 	if x != nil {
 		return x.ResetId
-	}
-	return ""
-}
-
-func (x *ResetPasswordRequest) GetCode() string {
-	if x != nil {
-		return x.Code
 	}
 	return ""
 }
@@ -794,7 +874,7 @@ type ResetPasswordResponse struct {
 
 func (x *ResetPasswordResponse) Reset() {
 	*x = ResetPasswordResponse{}
-	mi := &file_sso_sso_proto_msgTypes[15]
+	mi := &file_sso_sso_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -806,7 +886,7 @@ func (x *ResetPasswordResponse) String() string {
 func (*ResetPasswordResponse) ProtoMessage() {}
 
 func (x *ResetPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_sso_proto_msgTypes[15]
+	mi := &file_sso_sso_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -819,7 +899,7 @@ func (x *ResetPasswordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetPasswordResponse.ProtoReflect.Descriptor instead.
 func (*ResetPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_sso_sso_proto_rawDescGZIP(), []int{15}
+	return file_sso_sso_proto_rawDescGZIP(), []int{17}
 }
 
 var File_sso_sso_proto protoreflect.FileDescriptor
@@ -863,22 +943,28 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\x15ForgotPasswordRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\"3\n" +
 	"\x16ForgotPasswordResponse\x12\x19\n" +
-	"\breset_id\x18\x01 \x01(\tR\aresetId\",\n" +
-	"\x0fSendCodeRequest\x12\x19\n" +
-	"\breset_id\x18\x01 \x01(\tR\aresetId\"\x12\n" +
-	"\x10SendCodeResponse\"a\n" +
-	"\x14ResetPasswordRequest\x12\x19\n" +
+	"\breset_id\x18\x01 \x01(\tR\aresetId\".\n" +
+	"\x11ResendCodeRequest\x12\x19\n" +
+	"\breset_id\x18\x01 \x01(\tR\aresetId\"\x14\n" +
+	"\x12ResendCodeResponse\"B\n" +
+	"\x11VerifyCodeRequest\x12\x19\n" +
 	"\breset_id\x18\x01 \x01(\tR\aresetId\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\tR\x04code\x12\x1a\n" +
+	"\x04code\x18\x02 \x01(\tR\x04code\"\x14\n" +
+	"\x12VerifyCodeResponse\"M\n" +
+	"\x14ResetPasswordRequest\x12\x19\n" +
+	"\breset_id\x18\x01 \x01(\tR\aresetId\x12\x1a\n" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword\"\x17\n" +
-	"\x15ResetPasswordResponse2\x94\x05\n" +
+	"\x15ResetPasswordResponse2\x82\x06\n" +
 	"\x04Auth\x12[\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/api/v1/auth/register\x12O\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/api/v1/auth/login\x12S\n" +
 	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/api/v1/auth/logout\x12W\n" +
 	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x15.auth.RefreshResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/api/v1/auth/refresh\x12o\n" +
-	"\x0eForgotPassword\x12\x1b.auth.ForgotPasswordRequest\x1a\x1c.auth.ForgotPasswordResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/api/v1/forgot-password\x12R\n" +
-	"\bSendCode\x12\x15.auth.SendCodeRequest\x1a\x16.auth.SendCodeResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/api/v1/code\x12k\n" +
+	"\x0eForgotPassword\x12\x1b.auth.ForgotPasswordRequest\x1a\x1c.auth.ForgotPasswordResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/api/v1/forgot-password\x12_\n" +
+	"\n" +
+	"ResendCode\x12\x17.auth.ResendCodeRequest\x1a\x18.auth.ResendCodeResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/api/v1/resend-code\x12_\n" +
+	"\n" +
+	"VerifyCode\x12\x17.auth.VerifyCodeRequest\x1a\x18.auth.VerifyCodeResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/api/v1/verify-code\x12k\n" +
 	"\rResetPassword\x12\x1a.auth.ResetPasswordRequest\x1a\x1b.auth.ResetPasswordResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/api/v1/reset-passwordB\x16Z\x14sliskov.sso.v1;ssov1b\x06proto3"
 
 var (
@@ -893,7 +979,7 @@ func file_sso_sso_proto_rawDescGZIP() []byte {
 	return file_sso_sso_proto_rawDescData
 }
 
-var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_sso_sso_proto_goTypes = []any{
 	(*UserShort)(nil),              // 0: auth.UserShort
 	(*User)(nil),                   // 1: auth.User
@@ -907,10 +993,12 @@ var file_sso_sso_proto_goTypes = []any{
 	(*RefreshResponse)(nil),        // 9: auth.RefreshResponse
 	(*ForgotPasswordRequest)(nil),  // 10: auth.ForgotPasswordRequest
 	(*ForgotPasswordResponse)(nil), // 11: auth.ForgotPasswordResponse
-	(*SendCodeRequest)(nil),        // 12: auth.SendCodeRequest
-	(*SendCodeResponse)(nil),       // 13: auth.SendCodeResponse
-	(*ResetPasswordRequest)(nil),   // 14: auth.ResetPasswordRequest
-	(*ResetPasswordResponse)(nil),  // 15: auth.ResetPasswordResponse
+	(*ResendCodeRequest)(nil),      // 12: auth.ResendCodeRequest
+	(*ResendCodeResponse)(nil),     // 13: auth.ResendCodeResponse
+	(*VerifyCodeRequest)(nil),      // 14: auth.VerifyCodeRequest
+	(*VerifyCodeResponse)(nil),     // 15: auth.VerifyCodeResponse
+	(*ResetPasswordRequest)(nil),   // 16: auth.ResetPasswordRequest
+	(*ResetPasswordResponse)(nil),  // 17: auth.ResetPasswordResponse
 }
 var file_sso_sso_proto_depIdxs = []int32{
 	0,  // 0: auth.RegisterResponse.user:type_name -> auth.UserShort
@@ -920,17 +1008,19 @@ var file_sso_sso_proto_depIdxs = []int32{
 	6,  // 4: auth.Auth.Logout:input_type -> auth.LogoutRequest
 	8,  // 5: auth.Auth.Refresh:input_type -> auth.RefreshRequest
 	10, // 6: auth.Auth.ForgotPassword:input_type -> auth.ForgotPasswordRequest
-	12, // 7: auth.Auth.SendCode:input_type -> auth.SendCodeRequest
-	14, // 8: auth.Auth.ResetPassword:input_type -> auth.ResetPasswordRequest
-	3,  // 9: auth.Auth.Register:output_type -> auth.RegisterResponse
-	5,  // 10: auth.Auth.Login:output_type -> auth.LoginResponse
-	7,  // 11: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	9,  // 12: auth.Auth.Refresh:output_type -> auth.RefreshResponse
-	11, // 13: auth.Auth.ForgotPassword:output_type -> auth.ForgotPasswordResponse
-	13, // 14: auth.Auth.SendCode:output_type -> auth.SendCodeResponse
-	15, // 15: auth.Auth.ResetPassword:output_type -> auth.ResetPasswordResponse
-	9,  // [9:16] is the sub-list for method output_type
-	2,  // [2:9] is the sub-list for method input_type
+	12, // 7: auth.Auth.ResendCode:input_type -> auth.ResendCodeRequest
+	14, // 8: auth.Auth.VerifyCode:input_type -> auth.VerifyCodeRequest
+	16, // 9: auth.Auth.ResetPassword:input_type -> auth.ResetPasswordRequest
+	3,  // 10: auth.Auth.Register:output_type -> auth.RegisterResponse
+	5,  // 11: auth.Auth.Login:output_type -> auth.LoginResponse
+	7,  // 12: auth.Auth.Logout:output_type -> auth.LogoutResponse
+	9,  // 13: auth.Auth.Refresh:output_type -> auth.RefreshResponse
+	11, // 14: auth.Auth.ForgotPassword:output_type -> auth.ForgotPasswordResponse
+	13, // 15: auth.Auth.ResendCode:output_type -> auth.ResendCodeResponse
+	15, // 16: auth.Auth.VerifyCode:output_type -> auth.VerifyCodeResponse
+	17, // 17: auth.Auth.ResetPassword:output_type -> auth.ResetPasswordResponse
+	10, // [10:18] is the sub-list for method output_type
+	2,  // [2:10] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
 	2,  // [2:2] is the sub-list for extension extendee
 	0,  // [0:2] is the sub-list for field type_name
@@ -947,7 +1037,7 @@ func file_sso_sso_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_sso_proto_rawDesc), len(file_sso_sso_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -144,38 +144,6 @@
         ]
       }
     },
-    "/api/v1/code": {
-      "post": {
-        "operationId": "Auth_SendCode",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/authSendCodeResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/authSendCodeRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
     "/api/v1/forgot-password": {
       "post": {
         "operationId": "Auth_ForgotPassword",
@@ -208,6 +176,38 @@
         ]
       }
     },
+    "/api/v1/resend-code": {
+      "post": {
+        "operationId": "Auth_ResendCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authResendCodeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authResendCodeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
     "/api/v1/reset-password": {
       "post": {
         "operationId": "Auth_ResetPassword",
@@ -232,6 +232,38 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/authResetPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/verify-code": {
+      "post": {
+        "operationId": "Auth_VerifyCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authVerifyCodeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authVerifyCodeRequest"
             }
           }
         ],
@@ -337,13 +369,21 @@
         }
       }
     },
-    "authResetPasswordRequest": {
+    "authResendCodeRequest": {
       "type": "object",
       "properties": {
         "resetId": {
           "type": "string"
-        },
-        "code": {
+        }
+      }
+    },
+    "authResendCodeResponse": {
+      "type": "object"
+    },
+    "authResetPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "resetId": {
           "type": "string"
         },
         "password": {
@@ -352,17 +392,6 @@
       }
     },
     "authResetPasswordResponse": {
-      "type": "object"
-    },
-    "authSendCodeRequest": {
-      "type": "object",
-      "properties": {
-        "resetId": {
-          "type": "string"
-        }
-      }
-    },
-    "authSendCodeResponse": {
       "type": "object"
     },
     "authUserShort": {
@@ -378,6 +407,20 @@
           "type": "string"
         }
       }
+    },
+    "authVerifyCodeRequest": {
+      "type": "object",
+      "properties": {
+        "resetId": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        }
+      }
+    },
+    "authVerifyCodeResponse": {
+      "type": "object"
     },
     "protobufAny": {
       "type": "object",
