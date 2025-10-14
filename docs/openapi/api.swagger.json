@@ -215,7 +215,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authResetPasswordRequest"
+              "$ref": "#/definitions/authResetPasswordResponse"
             }
           },
           "default": {
@@ -350,6 +350,9 @@
           "type": "string"
         }
       }
+    },
+    "authResetPasswordResponse": {
+      "type": "object"
     },
     "authSendCodeRequest": {
       "type": "object",

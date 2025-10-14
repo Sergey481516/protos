@@ -871,15 +871,15 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\breset_id\x18\x01 \x01(\tR\aresetId\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x1a\n" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword\"\x17\n" +
-	"\x15ResetPasswordResponse2\x93\x05\n" +
+	"\x15ResetPasswordResponse2\x94\x05\n" +
 	"\x04Auth\x12[\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/api/v1/auth/register\x12O\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/api/v1/auth/login\x12S\n" +
 	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/api/v1/auth/logout\x12W\n" +
 	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x15.auth.RefreshResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/api/v1/auth/refresh\x12o\n" +
 	"\x0eForgotPassword\x12\x1b.auth.ForgotPasswordRequest\x1a\x1c.auth.ForgotPasswordResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/api/v1/forgot-password\x12R\n" +
-	"\bSendCode\x12\x15.auth.SendCodeRequest\x1a\x16.auth.SendCodeResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/api/v1/code\x12j\n" +
-	"\rResetPassword\x12\x1a.auth.ResetPasswordRequest\x1a\x1a.auth.ResetPasswordRequest\"!\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/api/v1/reset-passwordB\x16Z\x14sliskov.sso.v1;ssov1b\x06proto3"
+	"\bSendCode\x12\x15.auth.SendCodeRequest\x1a\x16.auth.SendCodeResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/api/v1/code\x12k\n" +
+	"\rResetPassword\x12\x1a.auth.ResetPasswordRequest\x1a\x1b.auth.ResetPasswordResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/api/v1/reset-passwordB\x16Z\x14sliskov.sso.v1;ssov1b\x06proto3"
 
 var (
 	file_sso_sso_proto_rawDescOnce sync.Once
@@ -928,7 +928,7 @@ var file_sso_sso_proto_depIdxs = []int32{
 	9,  // 12: auth.Auth.Refresh:output_type -> auth.RefreshResponse
 	11, // 13: auth.Auth.ForgotPassword:output_type -> auth.ForgotPasswordResponse
 	13, // 14: auth.Auth.SendCode:output_type -> auth.SendCodeResponse
-	14, // 15: auth.Auth.ResetPassword:output_type -> auth.ResetPasswordRequest
+	15, // 15: auth.Auth.ResetPassword:output_type -> auth.ResetPasswordResponse
 	9,  // [9:16] is the sub-list for method output_type
 	2,  // [2:9] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name

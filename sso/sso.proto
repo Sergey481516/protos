@@ -49,7 +49,7 @@ service Auth {
     };
   }
 
-  rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordRequest) {
+  rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse) {
     option (google.api.http) = {
       post: "/api/v1/reset-password",
       body: "*"

@@ -38,7 +38,7 @@ type AuthClient interface {
 	Refresh(ctx context.Context, in *RefreshRequest, opts ...grpc.CallOption) (*RefreshResponse, error)
 	ForgotPassword(ctx context.Context, in *ForgotPasswordRequest, opts ...grpc.CallOption) (*ForgotPasswordResponse, error)
 	SendCode(ctx context.Context, in *SendCodeRequest, opts ...grpc.CallOption) (*SendCodeResponse, error)
-	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordRequest, error)
+	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error)
 }
 
 type authClient struct {
@@ -109,9 +109,9 @@ func (c *authClient) SendCode(ctx context.Context, in *SendCodeRequest, opts ...
 	return out, nil
 }
 
-func (c *authClient) ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordRequest, error) {
+func (c *authClient) ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResetPasswordRequest)
+	out := new(ResetPasswordResponse)
 	err := c.cc.Invoke(ctx, Auth_ResetPassword_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -129,7 +129,7 @@ type AuthServer interface {
 	Refresh(context.Context, *RefreshRequest) (*RefreshResponse, error)
 	ForgotPassword(context.Context, *ForgotPasswordRequest) (*ForgotPasswordResponse, error)
 	SendCode(context.Context, *SendCodeRequest) (*SendCodeResponse, error)
-	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordRequest, error)
+	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
 
@@ -158,7 +158,7 @@ func (UnimplementedAuthServer) ForgotPassword(context.Context, *ForgotPasswordRe
 func (UnimplementedAuthServer) SendCode(context.Context, *SendCodeRequest) (*SendCodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendCode not implemented")
 }
-func (UnimplementedAuthServer) ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordRequest, error) {
+func (UnimplementedAuthServer) ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetPassword not implemented")
 }
 func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
