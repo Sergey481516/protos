@@ -16,7 +16,7 @@
     "application/json"
   ],
   "paths": {
-    "/v1/auth/login": {
+    "/api/v1/auth/login": {
       "post": {
         "operationId": "Auth_Login",
         "responses": {
@@ -48,7 +48,71 @@
         ]
       }
     },
-    "/v1/auth/register": {
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "Auth_Logout",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authLogoutResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authLogoutRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/refresh": {
+      "post": {
+        "operationId": "Auth_Refresh",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authRefreshResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authRefreshRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/register": {
       "post": {
         "operationId": "Auth_Register",
         "responses": {
@@ -79,16 +143,115 @@
           "Auth"
         ]
       }
+    },
+    "/api/v1/code": {
+      "post": {
+        "operationId": "Auth_SendCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authSendCodeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authSendCodeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/forgot-password": {
+      "post": {
+        "operationId": "Auth_ForgotPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authForgotPasswordResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authForgotPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/reset-password": {
+      "post": {
+        "operationId": "Auth_ResetPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authResetPasswordRequest"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authResetPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Auth"
+        ]
+      }
     }
   },
   "definitions": {
-    "authIsAdminResponse": {
+    "authForgotPasswordRequest": {
       "type": "object",
       "properties": {
-        "isAdmin": {
-          "type": "boolean"
+        "email": {
+          "type": "string"
         }
       }
+    },
+    "authForgotPasswordResponse": {
+      "type": "object"
     },
     "authLoginRequest": {
       "type": "object",
@@ -108,14 +271,40 @@
     "authLoginResponse": {
       "type": "object",
       "properties": {
-        "token": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/authUserShort"
+        }
+      }
+    },
+    "authLogoutRequest": {
+      "type": "object"
+    },
+    "authLogoutResponse": {
+      "type": "object"
+    },
+    "authRefreshRequest": {
+      "type": "object",
+      "properties": {
+        "refreshToken": {
           "type": "string"
         }
       }
     },
+    "authRefreshResponse": {
+      "type": "object"
+    },
     "authRegisterRequest": {
       "type": "object",
       "properties": {
+        "fullName": {
+          "type": "string"
+        },
         "email": {
           "type": "string"
         },
@@ -127,7 +316,54 @@
     "authRegisterResponse": {
       "type": "object",
       "properties": {
-        "userId": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/authUserShort"
+        }
+      }
+    },
+    "authResetPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        },
+        "resetToken": {
+          "type": "string"
+        }
+      }
+    },
+    "authSendCodeRequest": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      }
+    },
+    "authSendCodeResponse": {
+      "type": "object",
+      "properties": {
+        "resetToken": {
+          "type": "string"
+        }
+      }
+    },
+    "authUserShort": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "email": {
           "type": "string"
         }
       }
