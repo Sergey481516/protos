@@ -16,7 +16,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/v1/auth/login": {
+    "/v1/auth/login": {
       "post": {
         "operationId": "Auth_Login",
         "responses": {
@@ -48,7 +48,7 @@
         ]
       }
     },
-    "/api/v1/auth/logout": {
+    "/v1/auth/logout": {
       "post": {
         "operationId": "Auth_Logout",
         "responses": {
@@ -80,7 +80,7 @@
         ]
       }
     },
-    "/api/v1/auth/refresh": {
+    "/v1/auth/refresh": {
       "post": {
         "operationId": "Auth_Refresh",
         "responses": {
@@ -112,7 +112,7 @@
         ]
       }
     },
-    "/api/v1/auth/register": {
+    "/v1/auth/register": {
       "post": {
         "operationId": "Auth_Register",
         "responses": {
@@ -144,7 +144,7 @@
         ]
       }
     },
-    "/api/v1/forgot-password": {
+    "/v1/forgot-password": {
       "post": {
         "operationId": "Auth_ForgotPassword",
         "responses": {
@@ -176,7 +176,7 @@
         ]
       }
     },
-    "/api/v1/resend-code": {
+    "/v1/resend-code": {
       "post": {
         "operationId": "Auth_ResendCode",
         "responses": {
@@ -208,7 +208,7 @@
         ]
       }
     },
-    "/api/v1/reset-password": {
+    "/v1/reset-password": {
       "post": {
         "operationId": "Auth_ResetPassword",
         "responses": {
@@ -240,7 +240,7 @@
         ]
       }
     },
-    "/api/v1/verify-code": {
+    "/v1/verify-code": {
       "post": {
         "operationId": "Auth_VerifyCode",
         "responses": {

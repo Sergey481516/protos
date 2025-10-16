@@ -9,56 +9,56 @@ import "google/api/annotations.proto";
 service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse) {
     option (google.api.http) = {
-        post: "/api/v1/auth/register"
+        post: "/v1/auth/register"
         body: "*"
     };
   };
 
   rpc Login(LoginRequest) returns (LoginResponse) {
     option (google.api.http) = {
-      post: "/api/v1/auth/login"
+      post: "/v1/auth/login"
       body: "*"
     };
   };
 
   rpc Logout(LogoutRequest) returns (LogoutResponse) {
     option (google.api.http) = {
-      post: "/api/v1/auth/logout",
+      post: "/v1/auth/logout",
       body: "*"
     };
   }
 
   rpc Refresh(RefreshRequest) returns (RefreshResponse) {
     option (google.api.http) = {
-      post: "/api/v1/auth/refresh",
+      post: "/v1/auth/refresh",
       body: "*"
     };
   }
 
   rpc ForgotPassword(ForgotPasswordRequest) returns (ForgotPasswordResponse) {
     option (google.api.http) = {
-      post: "/api/v1/forgot-password",
+      post: "/v1/forgot-password",
       body: "*"
     };
   }
 
   rpc ResendCode(ResendCodeRequest) returns (ResendCodeResponse) {
     option (google.api.http) = {
-      post: "/api/v1/resend-code",
+      post: "/v1/resend-code",
       body: "*"
     };
   }
 
   rpc VerifyCode(VerifyCodeRequest) returns (VerifyCodeResponse) {
     option (google.api.http) = {
-      post: "/api/v1/verify-code",
+      post: "/v1/verify-code",
       body: "*"
     };
   }
 
   rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse) {
     option (google.api.http) = {
-      post: "/api/v1/reset-password",
+      post: "/v1/reset-password",
       body: "*"
     };
   }
