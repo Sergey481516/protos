@@ -37,28 +37,28 @@ service Auth {
 
   rpc ForgotPassword(ForgotPasswordRequest) returns (ForgotPasswordResponse) {
     option (google.api.http) = {
-      post: "/v1/forgot-password",
+      post: "/v1/auth/forgot-password",
       body: "*"
     };
   }
 
   rpc ResendCode(ResendCodeRequest) returns (ResendCodeResponse) {
     option (google.api.http) = {
-      post: "/v1/resend-code",
+      post: "/v1/auth/resend-code",
       body: "*"
     };
   }
 
   rpc VerifyCode(VerifyCodeRequest) returns (VerifyCodeResponse) {
     option (google.api.http) = {
-      post: "/v1/verify-code",
+      post: "/v1/auth/verify-code",
       body: "*"
     };
   }
 
   rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse) {
     option (google.api.http) = {
-      post: "/v1/reset-password",
+      post: "/v1/auth/reset-password",
       body: "*"
     };
   }

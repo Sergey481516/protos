@@ -16,6 +16,38 @@
     "application/json"
   ],
   "paths": {
+    "/v1/auth/forgot-password": {
+      "post": {
+        "operationId": "Auth_ForgotPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/authForgotPasswordResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/authForgotPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
     "/v1/auth/login": {
       "post": {
         "operationId": "Auth_Login",
@@ -144,39 +176,7 @@
         ]
       }
     },
-    "/v1/forgot-password": {
-      "post": {
-        "operationId": "Auth_ForgotPassword",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/authForgotPasswordResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/authForgotPasswordRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
-    "/v1/resend-code": {
+    "/v1/auth/resend-code": {
       "post": {
         "operationId": "Auth_ResendCode",
         "responses": {
@@ -208,7 +208,7 @@
         ]
       }
     },
-    "/v1/reset-password": {
+    "/v1/auth/reset-password": {
       "post": {
         "operationId": "Auth_ResetPassword",
         "responses": {
@@ -240,7 +240,7 @@
         ]
       }
     },
-    "/v1/verify-code": {
+    "/v1/auth/verify-code": {
       "post": {
         "operationId": "Auth_VerifyCode",
         "responses": {
