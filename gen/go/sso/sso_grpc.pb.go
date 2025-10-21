@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Auth_Register_FullMethodName       = "/auth.Auth/Register"
-	Auth_Login_FullMethodName          = "/auth.Auth/Login"
-	Auth_Logout_FullMethodName         = "/auth.Auth/Logout"
-	Auth_Refresh_FullMethodName        = "/auth.Auth/Refresh"
-	Auth_ForgotPassword_FullMethodName = "/auth.Auth/ForgotPassword"
-	Auth_ResendCode_FullMethodName     = "/auth.Auth/ResendCode"
-	Auth_VerifyCode_FullMethodName     = "/auth.Auth/VerifyCode"
-	Auth_ResetPassword_FullMethodName  = "/auth.Auth/ResetPassword"
+	Auth_Register_FullMethodName       = "/auth.v1.Auth/Register"
+	Auth_Login_FullMethodName          = "/auth.v1.Auth/Login"
+	Auth_Logout_FullMethodName         = "/auth.v1.Auth/Logout"
+	Auth_Refresh_FullMethodName        = "/auth.v1.Auth/Refresh"
+	Auth_ForgotPassword_FullMethodName = "/auth.v1.Auth/ForgotPassword"
+	Auth_ResendCode_FullMethodName     = "/auth.v1.Auth/ResendCode"
+	Auth_VerifyCode_FullMethodName     = "/auth.v1.Auth/VerifyCode"
+	Auth_ResetPassword_FullMethodName  = "/auth.v1.Auth/ResetPassword"
 )
 
 // AuthClient is the client API for Auth service.
@@ -346,7 +346,7 @@ func _Auth_ResetPassword_Handler(srv interface{}, ctx context.Context, dec func(
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Auth_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "auth.Auth",
+	ServiceName: "auth.v1.Auth",
 	HandlerType: (*AuthServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

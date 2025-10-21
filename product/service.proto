@@ -2,13 +2,13 @@ syntax = "proto3";
 
 package product.v1;
 
-option go_package = "sliskov.sso.v1;ssov1";
+option go_package = "sliskov.product.v1;productv1";
 
 import "google/api/annotations.proto";
 
-import "product.proto";
+import "product/product.proto";
 
-service Product {
+service ProductService {
   rpc ProductList(ProductListRequest) returns (ProductListResponse) {
     option (google.api.http) = {
       get: "/v1/product-service/product"
@@ -34,17 +34,21 @@ message ProductListResponse {
   int32 page = 1;
   int32 size = 2;
   int32 total = 3;
-  repeated ProductShort = 4;
+  repeated ProductShort list = 4;
 }
 
-message ProductRequest {}
+message ProductRequest {
+  string product_id = 1;
+}
 
 message ProductResponse {
   Product product = 1;
 }
 
-message CommentListRequest {}
+message CommentListRequest {
+  string product_id = 1;
+}
 
 message CommentListResponse {
-  Comment list = 1;
+  repeated Comment list = 1;
 }

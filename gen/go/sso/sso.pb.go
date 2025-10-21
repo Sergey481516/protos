@@ -906,7 +906,7 @@ var File_sso_sso_proto protoreflect.FileDescriptor
 
 const file_sso_sso_proto_rawDesc = "" +
 	"\n" +
-	"\rsso/sso.proto\x12\x04auth\x1a\x1cgoogle/api/annotations.proto\"N\n" +
+	"\rsso/sso.proto\x12\aauth.v1\x1a\x1cgoogle/api/annotations.proto\"N\n" +
 	"\tUserShort\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tfull_name\x18\x02 \x01(\tR\bfullName\x12\x14\n" +
@@ -921,19 +921,19 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\x0fRegisterRequest\x12\x1b\n" +
 	"\tfull_name\x18\x01 \x01(\tR\bfullName\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\"\x7f\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\"\x82\x01\n" +
 	"\x10RegisterResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12#\n" +
-	"\x04user\x18\x03 \x01(\v2\x0f.auth.UserShortR\x04user\"W\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12&\n" +
+	"\x04user\x18\x03 \x01(\v2\x12.auth.v1.UserShortR\x04user\"W\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x15\n" +
-	"\x06app_id\x18\x03 \x01(\x03R\x05appId\"|\n" +
+	"\x06app_id\x18\x03 \x01(\x03R\x05appId\"\x7f\n" +
 	"\rLoginResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12#\n" +
-	"\x04user\x18\x03 \x01(\v2\x0f.auth.UserShortR\x04user\"4\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12&\n" +
+	"\x04user\x18\x03 \x01(\v2\x12.auth.v1.UserShortR\x04user\"4\n" +
 	"\rLogoutRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\x10\n" +
 	"\x0eLogoutResponse\"5\n" +
@@ -954,18 +954,18 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\x14ResetPasswordRequest\x12\x19\n" +
 	"\breset_id\x18\x01 \x01(\tR\aresetId\x12\x1a\n" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword\"\x17\n" +
-	"\x15ResetPasswordResponse2\xf6\x05\n" +
-	"\x04Auth\x12W\n" +
-	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/v1/auth/register\x12K\n" +
-	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/v1/auth/login\x12O\n" +
-	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/v1/auth/logout\x12S\n" +
-	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x15.auth.RefreshResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/v1/auth/refresh\x12p\n" +
-	"\x0eForgotPassword\x12\x1b.auth.ForgotPasswordRequest\x1a\x1c.auth.ForgotPasswordResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/v1/auth/forgot-password\x12`\n" +
+	"\x15ResetPasswordResponse2\xa6\x06\n" +
+	"\x04Auth\x12]\n" +
+	"\bRegister\x12\x18.auth.v1.RegisterRequest\x1a\x19.auth.v1.RegisterResponse\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/v1/auth/register\x12Q\n" +
+	"\x05Login\x12\x15.auth.v1.LoginRequest\x1a\x16.auth.v1.LoginResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/v1/auth/login\x12U\n" +
+	"\x06Logout\x12\x16.auth.v1.LogoutRequest\x1a\x17.auth.v1.LogoutResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/v1/auth/logout\x12Y\n" +
+	"\aRefresh\x12\x17.auth.v1.RefreshRequest\x1a\x18.auth.v1.RefreshResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/v1/auth/refresh\x12v\n" +
+	"\x0eForgotPassword\x12\x1e.auth.v1.ForgotPasswordRequest\x1a\x1f.auth.v1.ForgotPasswordResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/v1/auth/forgot-password\x12f\n" +
 	"\n" +
-	"ResendCode\x12\x17.auth.ResendCodeRequest\x1a\x18.auth.ResendCodeResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/v1/auth/resend-code\x12`\n" +
+	"ResendCode\x12\x1a.auth.v1.ResendCodeRequest\x1a\x1b.auth.v1.ResendCodeResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/v1/auth/resend-code\x12f\n" +
 	"\n" +
-	"VerifyCode\x12\x17.auth.VerifyCodeRequest\x1a\x18.auth.VerifyCodeResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/v1/auth/verify-code\x12l\n" +
-	"\rResetPassword\x12\x1a.auth.ResetPasswordRequest\x1a\x1b.auth.ResetPasswordResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/v1/auth/reset-passwordB\x16Z\x14sliskov.sso.v1;ssov1b\x06proto3"
+	"VerifyCode\x12\x1a.auth.v1.VerifyCodeRequest\x1a\x1b.auth.v1.VerifyCodeResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/v1/auth/verify-code\x12r\n" +
+	"\rResetPassword\x12\x1d.auth.v1.ResetPasswordRequest\x1a\x1e.auth.v1.ResetPasswordResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/v1/auth/reset-passwordB\x16Z\x14sliskov.sso.v1;ssov1b\x06proto3"
 
 var (
 	file_sso_sso_proto_rawDescOnce sync.Once
@@ -981,44 +981,44 @@ func file_sso_sso_proto_rawDescGZIP() []byte {
 
 var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_sso_sso_proto_goTypes = []any{
-	(*UserShort)(nil),              // 0: auth.UserShort
-	(*User)(nil),                   // 1: auth.User
-	(*RegisterRequest)(nil),        // 2: auth.RegisterRequest
-	(*RegisterResponse)(nil),       // 3: auth.RegisterResponse
-	(*LoginRequest)(nil),           // 4: auth.LoginRequest
-	(*LoginResponse)(nil),          // 5: auth.LoginResponse
-	(*LogoutRequest)(nil),          // 6: auth.LogoutRequest
-	(*LogoutResponse)(nil),         // 7: auth.LogoutResponse
-	(*RefreshRequest)(nil),         // 8: auth.RefreshRequest
-	(*RefreshResponse)(nil),        // 9: auth.RefreshResponse
-	(*ForgotPasswordRequest)(nil),  // 10: auth.ForgotPasswordRequest
-	(*ForgotPasswordResponse)(nil), // 11: auth.ForgotPasswordResponse
-	(*ResendCodeRequest)(nil),      // 12: auth.ResendCodeRequest
-	(*ResendCodeResponse)(nil),     // 13: auth.ResendCodeResponse
-	(*VerifyCodeRequest)(nil),      // 14: auth.VerifyCodeRequest
-	(*VerifyCodeResponse)(nil),     // 15: auth.VerifyCodeResponse
-	(*ResetPasswordRequest)(nil),   // 16: auth.ResetPasswordRequest
-	(*ResetPasswordResponse)(nil),  // 17: auth.ResetPasswordResponse
+	(*UserShort)(nil),              // 0: auth.v1.UserShort
+	(*User)(nil),                   // 1: auth.v1.User
+	(*RegisterRequest)(nil),        // 2: auth.v1.RegisterRequest
+	(*RegisterResponse)(nil),       // 3: auth.v1.RegisterResponse
+	(*LoginRequest)(nil),           // 4: auth.v1.LoginRequest
+	(*LoginResponse)(nil),          // 5: auth.v1.LoginResponse
+	(*LogoutRequest)(nil),          // 6: auth.v1.LogoutRequest
+	(*LogoutResponse)(nil),         // 7: auth.v1.LogoutResponse
+	(*RefreshRequest)(nil),         // 8: auth.v1.RefreshRequest
+	(*RefreshResponse)(nil),        // 9: auth.v1.RefreshResponse
+	(*ForgotPasswordRequest)(nil),  // 10: auth.v1.ForgotPasswordRequest
+	(*ForgotPasswordResponse)(nil), // 11: auth.v1.ForgotPasswordResponse
+	(*ResendCodeRequest)(nil),      // 12: auth.v1.ResendCodeRequest
+	(*ResendCodeResponse)(nil),     // 13: auth.v1.ResendCodeResponse
+	(*VerifyCodeRequest)(nil),      // 14: auth.v1.VerifyCodeRequest
+	(*VerifyCodeResponse)(nil),     // 15: auth.v1.VerifyCodeResponse
+	(*ResetPasswordRequest)(nil),   // 16: auth.v1.ResetPasswordRequest
+	(*ResetPasswordResponse)(nil),  // 17: auth.v1.ResetPasswordResponse
 }
 var file_sso_sso_proto_depIdxs = []int32{
-	0,  // 0: auth.RegisterResponse.user:type_name -> auth.UserShort
-	0,  // 1: auth.LoginResponse.user:type_name -> auth.UserShort
-	2,  // 2: auth.Auth.Register:input_type -> auth.RegisterRequest
-	4,  // 3: auth.Auth.Login:input_type -> auth.LoginRequest
-	6,  // 4: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	8,  // 5: auth.Auth.Refresh:input_type -> auth.RefreshRequest
-	10, // 6: auth.Auth.ForgotPassword:input_type -> auth.ForgotPasswordRequest
-	12, // 7: auth.Auth.ResendCode:input_type -> auth.ResendCodeRequest
-	14, // 8: auth.Auth.VerifyCode:input_type -> auth.VerifyCodeRequest
-	16, // 9: auth.Auth.ResetPassword:input_type -> auth.ResetPasswordRequest
-	3,  // 10: auth.Auth.Register:output_type -> auth.RegisterResponse
-	5,  // 11: auth.Auth.Login:output_type -> auth.LoginResponse
-	7,  // 12: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	9,  // 13: auth.Auth.Refresh:output_type -> auth.RefreshResponse
-	11, // 14: auth.Auth.ForgotPassword:output_type -> auth.ForgotPasswordResponse
-	13, // 15: auth.Auth.ResendCode:output_type -> auth.ResendCodeResponse
-	15, // 16: auth.Auth.VerifyCode:output_type -> auth.VerifyCodeResponse
-	17, // 17: auth.Auth.ResetPassword:output_type -> auth.ResetPasswordResponse
+	0,  // 0: auth.v1.RegisterResponse.user:type_name -> auth.v1.UserShort
+	0,  // 1: auth.v1.LoginResponse.user:type_name -> auth.v1.UserShort
+	2,  // 2: auth.v1.Auth.Register:input_type -> auth.v1.RegisterRequest
+	4,  // 3: auth.v1.Auth.Login:input_type -> auth.v1.LoginRequest
+	6,  // 4: auth.v1.Auth.Logout:input_type -> auth.v1.LogoutRequest
+	8,  // 5: auth.v1.Auth.Refresh:input_type -> auth.v1.RefreshRequest
+	10, // 6: auth.v1.Auth.ForgotPassword:input_type -> auth.v1.ForgotPasswordRequest
+	12, // 7: auth.v1.Auth.ResendCode:input_type -> auth.v1.ResendCodeRequest
+	14, // 8: auth.v1.Auth.VerifyCode:input_type -> auth.v1.VerifyCodeRequest
+	16, // 9: auth.v1.Auth.ResetPassword:input_type -> auth.v1.ResetPasswordRequest
+	3,  // 10: auth.v1.Auth.Register:output_type -> auth.v1.RegisterResponse
+	5,  // 11: auth.v1.Auth.Login:output_type -> auth.v1.LoginResponse
+	7,  // 12: auth.v1.Auth.Logout:output_type -> auth.v1.LogoutResponse
+	9,  // 13: auth.v1.Auth.Refresh:output_type -> auth.v1.RefreshResponse
+	11, // 14: auth.v1.Auth.ForgotPassword:output_type -> auth.v1.ForgotPasswordResponse
+	13, // 15: auth.v1.Auth.ResendCode:output_type -> auth.v1.ResendCodeResponse
+	15, // 16: auth.v1.Auth.VerifyCode:output_type -> auth.v1.VerifyCodeResponse
+	17, // 17: auth.v1.Auth.ResetPassword:output_type -> auth.v1.ResetPasswordResponse
 	10, // [10:18] is the sub-list for method output_type
 	2,  // [2:10] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name

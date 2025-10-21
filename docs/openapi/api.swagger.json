@@ -1,10 +1,13 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "sso/sso.proto",
+    "title": "product/product.proto",
     "version": "version not set"
   },
   "tags": [
+    {
+      "name": "ProductService"
+    },
     {
       "name": "Auth"
     }
@@ -23,7 +26,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authForgotPasswordResponse"
+              "$ref": "#/definitions/v1ForgotPasswordResponse"
             }
           },
           "default": {
@@ -39,7 +42,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authForgotPasswordRequest"
+              "$ref": "#/definitions/v1ForgotPasswordRequest"
             }
           }
         ],
@@ -55,7 +58,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authLoginResponse"
+              "$ref": "#/definitions/v1LoginResponse"
             }
           },
           "default": {
@@ -71,7 +74,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authLoginRequest"
+              "$ref": "#/definitions/v1LoginRequest"
             }
           }
         ],
@@ -87,7 +90,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authLogoutResponse"
+              "$ref": "#/definitions/v1LogoutResponse"
             }
           },
           "default": {
@@ -103,7 +106,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authLogoutRequest"
+              "$ref": "#/definitions/v1LogoutRequest"
             }
           }
         ],
@@ -119,7 +122,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authRefreshResponse"
+              "$ref": "#/definitions/v1RefreshResponse"
             }
           },
           "default": {
@@ -135,7 +138,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authRefreshRequest"
+              "$ref": "#/definitions/v1RefreshRequest"
             }
           }
         ],
@@ -151,7 +154,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authRegisterResponse"
+              "$ref": "#/definitions/v1RegisterResponse"
             }
           },
           "default": {
@@ -167,7 +170,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authRegisterRequest"
+              "$ref": "#/definitions/v1RegisterRequest"
             }
           }
         ],
@@ -183,7 +186,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authResendCodeResponse"
+              "$ref": "#/definitions/v1ResendCodeResponse"
             }
           },
           "default": {
@@ -199,7 +202,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authResendCodeRequest"
+              "$ref": "#/definitions/v1ResendCodeRequest"
             }
           }
         ],
@@ -215,7 +218,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authResetPasswordResponse"
+              "$ref": "#/definitions/v1ResetPasswordResponse"
             }
           },
           "default": {
@@ -231,7 +234,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authResetPasswordRequest"
+              "$ref": "#/definitions/v1ResetPasswordRequest"
             }
           }
         ],
@@ -247,7 +250,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/authVerifyCodeResponse"
+              "$ref": "#/definitions/v1VerifyCodeResponse"
             }
           },
           "default": {
@@ -263,7 +266,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/authVerifyCodeRequest"
+              "$ref": "#/definitions/v1VerifyCodeRequest"
             }
           }
         ],
@@ -271,156 +274,129 @@
           "Auth"
         ]
       }
+    },
+    "/v1/product-service/comment/{productId}": {
+      "get": {
+        "operationId": "ProductService_CommentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CommentListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/v1/product-service/product": {
+      "get": {
+        "operationId": "ProductService_ProductList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ProductListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/v1/product-service/product/{productId}": {
+      "get": {
+        "operationId": "ProductService_Product",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ProductResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
     }
   },
   "definitions": {
-    "authForgotPasswordRequest": {
-      "type": "object",
-      "properties": {
-        "email": {
-          "type": "string"
-        }
-      }
-    },
-    "authForgotPasswordResponse": {
-      "type": "object",
-      "properties": {
-        "resetId": {
-          "type": "string"
-        }
-      }
-    },
-    "authLoginRequest": {
-      "type": "object",
-      "properties": {
-        "email": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "appId": {
-          "type": "string",
-          "format": "int64"
-        }
-      }
-    },
-    "authLoginResponse": {
-      "type": "object",
-      "properties": {
-        "accessToken": {
-          "type": "string"
-        },
-        "refreshToken": {
-          "type": "string"
-        },
-        "user": {
-          "$ref": "#/definitions/authUserShort"
-        }
-      }
-    },
-    "authLogoutRequest": {
-      "type": "object",
-      "properties": {
-        "refreshToken": {
-          "type": "string"
-        }
-      }
-    },
-    "authLogoutResponse": {
-      "type": "object"
-    },
-    "authRefreshRequest": {
-      "type": "object",
-      "properties": {
-        "refreshToken": {
-          "type": "string"
-        }
-      }
-    },
-    "authRefreshResponse": {
-      "type": "object"
-    },
-    "authRegisterRequest": {
-      "type": "object",
-      "properties": {
-        "fullName": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        }
-      }
-    },
-    "authRegisterResponse": {
-      "type": "object",
-      "properties": {
-        "accessToken": {
-          "type": "string"
-        },
-        "refreshToken": {
-          "type": "string"
-        },
-        "user": {
-          "$ref": "#/definitions/authUserShort"
-        }
-      }
-    },
-    "authResendCodeRequest": {
-      "type": "object",
-      "properties": {
-        "resetId": {
-          "type": "string"
-        }
-      }
-    },
-    "authResendCodeResponse": {
-      "type": "object"
-    },
-    "authResetPasswordRequest": {
-      "type": "object",
-      "properties": {
-        "resetId": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        }
-      }
-    },
-    "authResetPasswordResponse": {
-      "type": "object"
-    },
-    "authUserShort": {
+    "productv1Product": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string"
         },
-        "fullName": {
+        "name": {
           "type": "string"
         },
-        "email": {
-          "type": "string"
-        }
-      }
-    },
-    "authVerifyCodeRequest": {
-      "type": "object",
-      "properties": {
-        "resetId": {
+        "description": {
           "type": "string"
         },
-        "code": {
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "discount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "category": {
+          "$ref": "#/definitions/v1Category"
+        },
+        "size": {
+          "$ref": "#/definitions/v1Size"
+        },
+        "image": {
           "type": "string"
+        },
+        "rating": {
+          "type": "number",
+          "format": "double"
+        },
+        "commentsCount": {
+          "type": "integer",
+          "format": "int32"
         }
       }
-    },
-    "authVerifyCodeResponse": {
-      "type": "object"
     },
     "protobufAny": {
       "type": "object",
@@ -449,6 +425,272 @@
           }
         }
       }
+    },
+    "v1Category": {
+      "type": "string",
+      "enum": [
+        "PRODUCT_UNSPECIFIED",
+        "THIRT",
+        "SHOE",
+        "HAT",
+        "ACCESSORY"
+      ],
+      "default": "PRODUCT_UNSPECIFIED"
+    },
+    "v1Comment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number",
+          "format": "double"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "v1CommentListResponse": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Comment"
+          }
+        }
+      }
+    },
+    "v1ForgotPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ForgotPasswordResponse": {
+      "type": "object",
+      "properties": {
+        "resetId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1LoginRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "appId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "v1LoginResponse": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/v1UserShort"
+        }
+      }
+    },
+    "v1LogoutRequest": {
+      "type": "object",
+      "properties": {
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "v1LogoutResponse": {
+      "type": "object"
+    },
+    "v1ProductListResponse": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ProductShort"
+          }
+        }
+      }
+    },
+    "v1ProductResponse": {
+      "type": "object",
+      "properties": {
+        "product": {
+          "$ref": "#/definitions/productv1Product"
+        }
+      }
+    },
+    "v1ProductShort": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "discount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "category": {
+          "$ref": "#/definitions/v1Category"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RefreshRequest": {
+      "type": "object",
+      "properties": {
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RefreshResponse": {
+      "type": "object"
+    },
+    "v1RegisterRequest": {
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RegisterResponse": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/v1UserShort"
+        }
+      }
+    },
+    "v1ResendCodeRequest": {
+      "type": "object",
+      "properties": {
+        "resetId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ResendCodeResponse": {
+      "type": "object"
+    },
+    "v1ResetPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "resetId": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ResetPasswordResponse": {
+      "type": "object"
+    },
+    "v1Size": {
+      "type": "string",
+      "enum": [
+        "SIZE_UNSPECIFIED",
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "default": "SIZE_UNSPECIFIED"
+    },
+    "v1UserShort": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "v1VerifyCodeRequest": {
+      "type": "object",
+      "properties": {
+        "resetId": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        }
+      }
+    },
+    "v1VerifyCodeResponse": {
+      "type": "object"
     }
   }
 }
