@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package product.v1;
+
+option go_package = "sliskov.sso.v1;ssov1";
+
+import "google/api/annotations.proto";
+
+import "product.proto";
+
+service Product {
+  rpc ProductList(ProductListRequest) returns (ProductListResponse) {
+    option (google.api.http) = {
+      get: "/v1/product-service/product"
+    };
+  }
+
+  rpc Product(ProductRequest) returns (ProductResponse) {
+    option (google.api.http) = {
+      get: "/v1/product-service/product/{product_id}"
+    };
+  }
+
+  rpc CommentList(CommentListRequest) returns (CommentListResponse) {
+    option (google.api.http) = {
+      get: "/v1/product-service/comment/{product_id}"
+    };
+  }
+}
+
+message ProductListRequest {}
+
+message ProductListResponse {
+  int32 page = 1;
+  int32 size = 2;
+  int32 total = 3;
+  repeated ProductShort = 4;
+}
+
+message ProductRequest {}
+
+message ProductResponse {
+  Product product = 1;
+}
+
+message CommentListRequest {}
+
+message CommentListResponse {
+  Comment list = 1;
+}

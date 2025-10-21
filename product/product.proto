@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package product.v1;
+
+option go_package = "sliskov.sso.v1;ssov1";
+
+import "google/protobuf/timestamp.proto";
+
+enum Category {
+  PRODUCT_UNSPECIFIED = 0;
+  THIRT = 1;
+  SHOE =  2;
+  HAT = 3;
+  ACCESSORY = 4;
+}
+
+enum Size {
+  SIZE_UNSPECIFIED = 0;
+  XS = 1;
+  S = 2;
+  M = 3;
+  L = 4;
+  XL = 5;
+  XXL = 6;
+}
+
+message ProductShort {
+  string id = 1;
+  string name = 2;
+  double price = 3;
+  int32 discount = 4;
+  Category category = 5;
+  string image = 6;
+}
+
+message Comment {
+  string id = 1;
+  string product_id = 2;
+  string user_id = 3;
+  string text = 4;
+  double rating = 5;
+  google.protobuf.Timestamp created_at = 6;
+}
+
+message Product {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+  int32 discount = 5;
+  Category category = 6;
+  Size size = 7;
+  string image = 8;
+  double rating = 9;
+  int32 commentsCount = 10;
+}
